@@ -1,0 +1,132 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-a
+  labels: 
+    app: app-a
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-a
+  template:
+    metadata:
+      labels:
+        app: app-a
+        tier: frontend
+    spec:
+      containers:
+        - name: app-a
+          image: iansoares/app_a:v0.5
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "0.5"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-b
+  labels: 
+    app: app-b
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-b
+  template:
+    metadata:
+      labels:
+        app: app-b
+        tier: frontend
+    spec:
+      containers:
+        - name: app-b
+          image: iansoares/app_b
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "0.5"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-c
+  labels: 
+    app: app-c
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-c
+  template:
+    metadata:
+      labels:
+        app: app-c
+        tier: frontend
+    spec:
+      containers:
+        - name: app-c
+          image: iansoares/app_c
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "0.5"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-d
+  labels: 
+    app: app-d
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-d
+  template:
+    metadata:
+      labels:
+        app: app-d
+        tier: frontend
+    spec:
+      containers:
+        - name: app-d
+          image: iansoares/app_d
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "0.5"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+

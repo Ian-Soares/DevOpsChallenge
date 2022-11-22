@@ -1,0 +1,35 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+    kubernetes.io/ingress.class: nginx
+
+  name: apps-ingress
+spec:
+  rules:
+  - host: cluster.iansoares.tk
+    http:
+      paths:
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service: 
+              name: apps-a
+              port:
+                number: 80  
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service: 
+              name: apps-b
+              port:
+                number: 80
+        - path: "/api"
+          pathType: Prefix
+          backend:
+            service: 
+              name: api-svc
+              port:
+                number: 8000

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    app: jenkins
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      serviceAccountName: efs-csi-controller-sa
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 50000
+              protocol: TCP
+          volumeMounts:
+          - mountPath: /jenkins
+            name: jenkins
+          resources:
+            limits:
+              memory: 5Gi
+              cpu: "3"
+            requests:
+              memory: 512Mi
+              cpu: "1"
+      restartPolicy: Always
+      volumes:
+      - name: jenkins
+        persistentVolumeClaim:
+          claimName: jenkins-claim

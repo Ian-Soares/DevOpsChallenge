@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-depl
+  labels: 
+    app: api
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+        tier: backend
+    spec:
+      containers:
+        - name: api
+          image: iansoares/api_all:v0.2
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"

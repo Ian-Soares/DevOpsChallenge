@@ -1,0 +1,33 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: cluster-eksctl-ian
+  region: us-east-1
+
+managedNodeGroups:
+  - name: ng-1
+    amiFamily: AmazonLinux2
+    instanceType: t3.medium
+    minSize: 2
+    desiredCapacity: 2
+    maxSize: 4
+    ssh:
+      publicKeyName: ian-sandbox-key
+    securityGroups:	
+      attachIDs: ["sg-099b6766d1cc04200"]
+
+vpc:
+  id: vpc-08cd42b8ec968ab1a
+  securityGroup: "sg-0cd8b87f9e1d1faf5"
+  subnets:
+    public:
+      public-one:                           
+          id: "subnet-0f5c82d91fa6d9a96"
+      public-two:                    
+          id: "subnet-064cf7124c84ec691"
+    # private:
+    #   private-one:
+    #       id: "subnet-05d1ac3273c2eede4"
+    #   private-two:
+    #       id: "subnet-0b024b8c1cbff6916"
