@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(74, 72, 72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+h2 {
+    color: rgb(230, 216, 216);
+}
+
+p {
+    color: whitesmoke;
+}
+
+.container {
+    margin-top: 15px;
+    display: grid;
+    text-align: center;
+    align-content: center;
+    border-color: black;
+    border-radius: 10px;
+    width: 80%;
+    height: 75vh;
+    background-color: dimgrey;
+    justify-items: center;
+}
+
+.results {
+    margin-top: 15px;
+    background-color: rgb(76, 99, 99);
+    width: 80%;
+    height: auto;
+    border-radius: 15px;
+}

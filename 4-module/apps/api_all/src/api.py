@@ -44,17 +44,32 @@ def get_cat_facts():
     return cat_fact
 
 
-@app.get('/api/get_gender/{name}')
-def get_gender(name):
-    URL = f'https://api.genderize.io/?name={name}'
-    response = requests.request("GET", URL, headers=headers)
+@app.get('/api/get_info/{name}')
+def get_info(name):
+    url_gender = f'https://api.genderize.io/?name={name}'
+    response = requests.request("GET", url_gender, headers=headers)
     gender = response.json()
-    return gender
 
-
-@app.get('/api/get_nacionality/{name}')
-def get_gender(name):
-    URL = f'https://api.nationalize.io/?name={name}'
-    response = requests.request("GET", URL, headers=headers)
+    url_nationalize = f'https://api.nationalize.io/?name={name}'
+    response = requests.request("GET", url_nationalize, headers=headers)
     nacionality = response.json()
-    return nacionality
+
+    # The nationalize public API returns values like "BR" for Brazil, what makes it harder to read the results
+    # So I use the response from nationalize API and get country names using their codes in restcountries URL, as below 
+    response_nacionality_list = []
+    for id in nacionality['country']:
+        url_restcountries = f'https://restcountries.com/v3.1/alpha/{id["country_id"]}'
+        response = requests.request("GET", url_restcountries, headers=headers)
+        new_probability = float(id['probability'])*100
+        response_nacionality_list.append({
+                "country": response.json()[0]['name']['common'],
+                "probability": f'{new_probability:.1f}%'
+            })
+
+    response_dict = {
+        "gender": gender['gender'],
+        "gender_probability": f"{float(gender['probability'])*100}%",
+        "nacionality": response_nacionality_list
+    }    
+    print(response_dict)
+    return response_dict 
