@@ -50,6 +50,7 @@ pipeline {
                         sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
                         sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
 
+                        sh 'aws eks update-kubeconfig --region us-east-1 --name cluster-prod'
                         sh 'kubectl apply -f 4-module/k8s_configs/deployments/apps_deployment.yaml'
                         sh 'kubectl apply -f 4-module/k8s_configs/deployments/api_deployment.yaml'
                     }
