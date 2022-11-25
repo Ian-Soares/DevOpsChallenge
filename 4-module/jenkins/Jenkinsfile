@@ -77,8 +77,8 @@ pipeline {
                         sh 'sed -i "s/{{namespace}}/prod/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
                         sh 'sed -i "s/{{namespace}}/prod/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
 
-                        sh 'kubectl --kubeconfig=/var/lib/jenkins/kube/config apply -f 4-module/k8s_configs/deployments/apps_deployment.yaml'
-                        sh 'kubectl --kubeconfig=/var/lib/jenkins/kube/config apply -f 4-module/k8s_configs/deployments/api_deployment.yaml'
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/api_deployment.yaml'
                     }
                 }
             }
