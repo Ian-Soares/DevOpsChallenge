@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-a
+  namespace: "{{namespace}}"
   labels: 
     app: app-a
     tier: frontend
@@ -19,7 +20,7 @@ spec:
     spec:
       containers:
         - name: app-a
-          image: iansoares/app_a:v0.5
+          image: iansoares/app_a:{{tag}}
           ports:
             - containerPort: 80
           imagePullPolicy: Always
@@ -36,6 +37,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-b
+  namespace: "{{namespace}}"
   labels: 
     app: app-b
     tier: frontend
@@ -52,7 +54,7 @@ spec:
     spec:
       containers:
         - name: app-b
-          image: iansoares/app_b
+          image: iansoares/app_b:{{tag}}
           ports:
             - containerPort: 80
           imagePullPolicy: Always
@@ -69,6 +71,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-c
+  namespace: "{{namespace}}"
   labels: 
     app: app-c
     tier: frontend
@@ -85,7 +88,7 @@ spec:
     spec:
       containers:
         - name: app-c
-          image: iansoares/app_c
+          image: iansoares/app_c:{{tag}}
           ports:
             - containerPort: 80
           imagePullPolicy: Always
@@ -102,6 +105,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-d
+  namespace: "{{namespace}}"
   labels: 
     app: app-d
     tier: frontend
@@ -118,7 +122,7 @@ spec:
     spec:
       containers:
         - name: app-d
-          image: iansoares/app_d
+          image: iansoares/app_d:{{tag}}
           ports:
             - containerPort: 80
           imagePullPolicy: Always

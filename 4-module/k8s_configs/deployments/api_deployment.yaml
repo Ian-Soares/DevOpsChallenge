@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-depl
+  namespace: "{{namespace}}"
   labels: 
     app: api
     tier: backend
@@ -19,7 +20,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: iansoares/api_all:v0.2
+          image: iansoares/api_all:{{tag}}
           ports:
             - containerPort: 8000
           resources:

@@ -1,0 +1,87 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build image') {
+            steps {
+                script {
+                    dockerapi = docker.build("iansoares/api_all:v0.${env.BUILD_ID}", '-f ./4-module/apps/api_all/Dockerfile ./4-module/apps/api_all/')
+                    dockerappa = docker.build("iansoares/app_a:v0.${env.BUILD_ID}", '-f ./4-module/apps/app_a/Dockerfile ./4-module/apps/app_a/')
+                    dockerappb = docker.build("iansoares/app_b:v0.${env.BUILD_ID}", '-f ./4-module/apps/app_b/Dockerfile ./4-module/apps/app_b/')
+                    dockerappc = docker.build("iansoares/app_c:v0.${env.BUILD_ID}", '-f ./4-module/apps/app_c/Dockerfile ./4-module/apps/app_c/')
+                    dockerappd = docker.build("iansoares/app_d:v0.${env.BUILD_ID}", '-f ./4-module/apps/app_d/Dockerfile ./4-module/apps/app_d/')
+                }
+            }
+        }
+
+        stage('push image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapi.push('latest')
+                        dockerapi.push("v0.${env.BUILD_ID}")
+
+                        dockerappa.push('latest')
+                        dockerappa.push("v0.${env.BUILD_ID}")
+
+                        dockerappb.push('latest')
+                        dockerappb.push("v0.${env.BUILD_ID}")
+
+                        dockerappb.push('latest')
+                        dockerappb.push("v0.${env.BUILD_ID}")
+
+                        dockerappc.push('latest')
+                        dockerappc.push("v0.${env.BUILD_ID}")
+
+                        dockerappd.push('latest')
+                        dockerappd.push("v0.${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+
+        stage('deploy to kubernetes (dev)') {
+            when {
+                branch 'dev'
+            }
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
+            steps {
+                script {
+                    withKubeConfig([credentialsId: 'kubeconfig']){
+                        sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
+                        sh 'sed -i "s/{{namespace}}/dev/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'sed -i "s/{{namespace}}/dev/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
+
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/api_deployment.yaml'
+                    }
+                }
+            }
+        }
+
+        stage('deploy to kubernetes (prod)') {
+            when {
+                branch 'main'
+            }
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
+            steps {
+                script {
+                    withKubeConfig([credentialsId: 'kubeconfig']){
+                        sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'sed -i "s/{{tag}}/v0.$tag_version/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
+                        sh 'sed -i "s/{{namespace}}/prod/g" ./4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'sed -i "s/{{namespace}}/prod/g" ./4-module/k8s_configs/deployments/api_deployment.yaml'
+
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/apps_deployment.yaml'
+                        sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f 4-module/k8s_configs/deployments/api_deployment.yaml'
+                    }
+                }
+            }
+        }
+    }
+}                                                                                                         

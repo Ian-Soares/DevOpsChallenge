@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: cluster-eksctl-ian
+  name: cluster-prod
   region: us-east-1
 
 managedNodeGroups:
@@ -26,8 +26,3 @@ vpc:
           id: "subnet-0f5c82d91fa6d9a96"
       public-two:                    
           id: "subnet-064cf7124c84ec691"
-    # private:
-    #   private-one:
-    #       id: "subnet-05d1ac3273c2eede4"
-    #   private-two:
-    #       id: "subnet-0b024b8c1cbff6916"
