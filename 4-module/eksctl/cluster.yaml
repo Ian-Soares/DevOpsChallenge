@@ -8,7 +8,7 @@ metadata:
 managedNodeGroups:
   - name: ng-1
     amiFamily: AmazonLinux2
-    instanceType: t3.small
+    instanceType: t3.medium
     minSize: 2
     desiredCapacity: 2
     maxSize: 4
