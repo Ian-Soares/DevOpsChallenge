@@ -18,7 +18,7 @@ yum install git -y
 
 # Running Apache containers
 mkdir /lab-sust
-git clone https://gitlab.com/Ian-Soares/desafio-sust.git /lab-sust/docker-mnt
+git clone https://github.com/Ian-Soares/DevOpsChallenge /lab-sust/docker-mnt
 cd /lab-sust/docker-mnt/1-module/
 docker build -t frontpage1:latest -f frontend1/Dockerfile frontend1/
 docker build -t frontpage2:latest -f frontend2/Dockerfile frontend2/
