@@ -5,16 +5,17 @@ function trocarFundo() {
     document.body.style.backgroundImage = `url('./img/copa${numeroFoto}.jpg')`;
 }
 
-btnCopa.addEventListener('click', function () {
+function main() {
     trocarFundo();
     numeroFoto += 1
     if(numeroFoto == 6) {
         numeroFoto = 1
         respostaHexa = prompt('Você confia no hexa? (s/n): ')
         if(respostaHexa[0] == 's' || respostaHexa[0] == 'S') {
-            alert('Aí sim, eu também!!!')
+            alert('Sua recompensa está logo abaixo!!!')
+            document.body.style.backgroundImage = `url('./img/sust-sun.png')`
         } else {
-            alert('Aí é triste, hein! Tem que confiar no brasa!')
+            alert('Tente novamente, só temos uma resposta certa aqui!')
         };
     };
-});
+};

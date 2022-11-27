@@ -15,7 +15,7 @@ p {
 }
 
 .container {
-    margin-top: 15px;
+    margin-top: 10vh;
     display: grid;
     text-align: center;
     align-content: center;
@@ -28,9 +28,19 @@ p {
 }
 
 .results {
-    margin-top: 15px;
-    background-color: rgb(76, 99, 99);
+    margin-top: 30px;
+    background-color: rgb(131, 128, 128);
     width: 80%;
     height: auto;
+    display: inline-block;
     border-radius: 15px;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+li {
+    color: aliceblue;
 }

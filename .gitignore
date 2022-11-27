@@ -3,3 +3,4 @@
 **/terraform*
 **/__pycache__
 **/*kubeconfig
+docs/

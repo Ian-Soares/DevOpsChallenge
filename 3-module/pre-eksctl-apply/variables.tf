@@ -57,7 +57,7 @@ variable "az_list" {
 variable "allow_inbound_cpl" {
   description = "Allow inbound rules for Control Plane"
   type        = list(any)
-  default     = ["80", "443"]
+  default     = ["443", "80"]
 }
 
 variable "allow_inbound_ng" {
