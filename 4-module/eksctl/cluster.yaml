@@ -1,8 +1,9 @@
+---
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: cluster-prod
+  name: eks-prod
   region: us-east-1
 
 managedNodeGroups:
