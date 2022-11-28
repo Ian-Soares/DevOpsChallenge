@@ -1,0 +1,15 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: prometheus
+  labels:
+    name: prometheus
+
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: grafana
+  labels:
+    name: grafana
