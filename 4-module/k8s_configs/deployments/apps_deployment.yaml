@@ -36,7 +36,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-b
-  namespace: "{{namespace}}"
   labels: 
     app: app-b
     tier: frontend
@@ -70,7 +69,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-c
-  namespace: "{{namespace}}"
   labels: 
     app: app-c
     tier: frontend
@@ -104,7 +102,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-d
-  namespace: "{{namespace}}"
   labels: 
     app: app-d
     tier: frontend
