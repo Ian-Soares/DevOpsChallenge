@@ -7,7 +7,7 @@ metadata:
     app: app-a
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-a
@@ -40,7 +40,7 @@ metadata:
     app: app-b
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-b
@@ -73,7 +73,7 @@ metadata:
     app: app-c
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-c
@@ -106,7 +106,7 @@ metadata:
     app: app-d
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-d
