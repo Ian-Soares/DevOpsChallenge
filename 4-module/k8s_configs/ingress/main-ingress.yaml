@@ -11,7 +11,7 @@ spec:
   - host: cluster.iansoares.tk
     http:
       paths:
-        - path: "/appa"
+        - path: "/"
           pathType: Prefix
           backend:
             service: 
