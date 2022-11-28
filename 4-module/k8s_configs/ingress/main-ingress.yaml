@@ -18,7 +18,7 @@ spec:
               name: apps-a
               port:
                 number: 80  
-        - path: "/"
+        - path: "/appb"
           pathType: Prefix
           backend:
             service: 
@@ -32,3 +32,23 @@ spec:
               name: api-svc
               port:
                 number: 8000
+  - host: appd.iansoares.tk
+    http:
+      paths:
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service: 
+              name: apps-d
+              port:
+                number: 80
+  - host: appc.iansoares.tk
+    http:
+      paths:
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service: 
+              name: apps-c
+              port:
+                number: 80
