@@ -62,7 +62,7 @@ pipeline {
         stage('testing apps') {
             steps{
                 script {
-                    
+                    echo('testing')
                 }
             }
         }
