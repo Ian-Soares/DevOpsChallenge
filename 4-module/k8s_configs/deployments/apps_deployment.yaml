@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-a
-  namespace: "{{namespace}}"
   labels: 
     app: app-a
     tier: frontend
