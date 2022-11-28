@@ -7,7 +7,7 @@ metadata:
     app: app-a
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-a
@@ -36,12 +36,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-b
-  namespace: "{{namespace}}"
   labels: 
     app: app-b
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-b
@@ -70,12 +69,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-c
-  namespace: "{{namespace}}"
   labels: 
     app: app-c
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-c
@@ -104,12 +102,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-d
-  namespace: "{{namespace}}"
   labels: 
     app: app-d
     tier: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-d
