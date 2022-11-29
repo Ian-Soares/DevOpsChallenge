@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source   = "./modules/vpc"
   vpc_name = "vpc-prod-eks"
 
   vpc_cidr_block   = var.vpc_cidr_block
@@ -12,7 +12,7 @@ module "vpc" {
 }
 
 module "vpc_dev" {
-  source = "./modules/vpc"
+  source   = "./modules/vpc"
   vpc_name = "vpc-dev-containers"
 
   vpc_cidr_block   = var.vpc_cidr_block

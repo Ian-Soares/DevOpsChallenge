@@ -32,8 +32,8 @@ variable "mime_types" {
 
 variable "site_domains" {
   description = "Site domain for Route 53 Hosted Zone"
-  type        = list
-  default = ["serverless.iansoares.tk", "www.iansoares.tk"]
+  type        = list(any)
+  default     = ["serverless.iansoares.tk", "www.iansoares.tk"]
 }
 
 variable "aliases_cf" {
