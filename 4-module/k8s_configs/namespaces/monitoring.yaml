@@ -2,14 +2,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: prometheus
+  name: monitoring
   labels:
-    name: prometheus
-
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: grafana
-  labels:
-    name: grafana
+    name: monitoring
