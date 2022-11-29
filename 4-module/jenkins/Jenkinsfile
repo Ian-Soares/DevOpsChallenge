@@ -5,11 +5,11 @@ pipeline {
         stage('build image') {
             steps {
                 script {
-                    dockerapi = docker.build("iansoares/api_all:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/api_all/Dockerfile ./4-module/apps/api_all/')
-                    dockerappa = docker.build("iansoares/app_a:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_a/Dockerfile ./4-module/apps/app_a/')
-                    dockerappb = docker.build("iansoares/app_b:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_b/Dockerfile ./4-module/apps/app_b/')
-                    dockerappc = docker.build("iansoares/app_c:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_c/Dockerfile ./4-module/apps/app_c/')
-                    dockerappd = docker.build("iansoares/app_d:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_d/Dockerfile ./4-module/apps/app_d/')
+                    dockerapi = docker.build("iansoares/api_all:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/api_all/Dockerfile ./4-module/apps/api_all/ --no-cache')
+                    dockerappa = docker.build("iansoares/app_a:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_a/Dockerfile ./4-module/apps/app_a/ --no-cache')
+                    dockerappb = docker.build("iansoares/app_b:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_b/Dockerfile ./4-module/apps/app_b/ --no-cache')
+                    dockerappc = docker.build("iansoares/app_c:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_c/Dockerfile ./4-module/apps/app_c/ --no-cache')
+                    dockerappd = docker.build("iansoares/app_d:v1.0.${env.BUILD_ID}", '-f ./4-module/apps/app_d/Dockerfile ./4-module/apps/app_d/ --no-cache')
                 }
             }
         }
