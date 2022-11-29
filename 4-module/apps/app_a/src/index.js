@@ -19,7 +19,7 @@ function clearFields() {
 };
 
 function api_request() {
-    fetch(`http://cluster.iansoares.tk/api/get_jokes`)
+    fetch(`https://cluster.iansoares.tk/api/get_jokes`)
         .then((response) => response.json())
         .then((data) => {
             question = data.setup;

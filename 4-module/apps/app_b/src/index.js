@@ -3,7 +3,7 @@ let api_status = ""
 let url = ""
 
 function api_request() {
-    fetch(`http://cluster.iansoares.tk/api/get_dog_images`)
+    fetch(`https://cluster.iansoares.tk/api/get_dog_images`)
         .then((response) => response.json())
         .then((data) => {
             api_status = data.status;
