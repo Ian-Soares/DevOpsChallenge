@@ -17,14 +17,14 @@ spec:
             service: 
               name: apps-a
               port:
-                number: 80  
+                number: 443
         - path: "/appb"
           pathType: Prefix
           backend:
             service: 
               name: apps-b
               port:
-                number: 80
+                number: 443
         - path: "/api"
           pathType: Prefix
           backend:
@@ -41,7 +41,7 @@ spec:
             service: 
               name: apps-d
               port:
-                number: 80
+                number: 443
   - host: appc.iansoares.tk
     http:
       paths:
@@ -51,4 +51,4 @@ spec:
             service: 
               name: apps-c
               port:
-                number: 80
+                number: 443
