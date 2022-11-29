@@ -3,6 +3,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: apps-a
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:647614927793:certificate/919141c6-3ecd-46a5-9465-3aeece92eab7
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+
   labels:
     tier: frontend
 spec:
@@ -11,15 +16,18 @@ spec:
     tier: frontend
   type: NodePort
   ports:
-    - port: 80
+    - port: 443
       targetPort: 80
-      nodePort: 32001
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: apps-b
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:647614927793:certificate/919141c6-3ecd-46a5-9465-3aeece92eab7
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
   labels:
     tier: frontend
 spec:
@@ -28,15 +36,18 @@ spec:
     tier: frontend
   type: NodePort
   ports:
-    - port: 80
+    - port: 443
       targetPort: 80
-      nodePort: 32002
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: apps-c
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:647614927793:certificate/919141c6-3ecd-46a5-9465-3aeece92eab7
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
   labels:
     tier: frontend
 spec:
@@ -45,15 +56,18 @@ spec:
     tier: frontend
   type: NodePort
   ports:
-    - port: 80
+    - port: 443
       targetPort: 80
-      nodePort: 32003
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: apps-d
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:647614927793:certificate/919141c6-3ecd-46a5-9465-3aeece92eab7
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
   labels:
     tier: frontend
 spec:
@@ -62,6 +76,5 @@ spec:
     tier: frontend
   type: NodePort
   ports:
-    - port: 80
+    - port: 443
       targetPort: 80
-      nodePort: 32004
