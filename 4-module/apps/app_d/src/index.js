@@ -12,7 +12,7 @@ let sleep = ms => {
 function getInfos() {
     let nameInserted = document.getElementById('name').value;
     if (nameInserted){
-        fetch(`http://cluster.iansoares.tk/api/get_info/${nameInserted}`)
+        fetch(`https://cluster.iansoares.tk/api/get_info/${nameInserted}`)
             .then((response) => response.json())
             .then((data) => {
                 gender = data.gender;

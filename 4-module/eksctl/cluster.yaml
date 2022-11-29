@@ -11,8 +11,8 @@ managedNodeGroups:
     amiFamily: AmazonLinux2
     instanceType: t3.medium
     minSize: 2
-    desiredCapacity: 2
-    maxSize: 4
+    desiredCapacity: 3
+    maxSize: 5
     ssh:
       publicKeyName: ian-sandbox-key
     securityGroups:	
