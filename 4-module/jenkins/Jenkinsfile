@@ -60,7 +60,7 @@ pipeline {
         stage('testing apps') {
             steps{
                 script {
-                    echo '' > outputs.txt
+                    echo 'testing stage'
                     // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_jokes | tee outputs.txt
                     // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_dog_images | tee outputs.txt
                     // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_cat_facts | tee outputs.txt
