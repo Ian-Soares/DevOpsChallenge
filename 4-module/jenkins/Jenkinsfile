@@ -60,7 +60,20 @@ pipeline {
         stage('testing apps') {
             steps{
                 script {
-                    echo('testing')
+                    echo '' > outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_jokes | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_dog_images | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_cat_facts | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/api/get_info/ian | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/ | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://cluster.iansoares.tk/appb/ | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://appc.iansoares.tk/ | tee outputs.txt
+                    // curl -s -o /dev/null -w "%{http_code}" https://appd.iansoares.tk/ | tee outputs.txt
+                    // for LINE in `cat outputs.txt`; do
+                    //     if [ LINE -ne 200 ]; then
+                    //         error "One or more URLs are not completely right, check the logs!"
+                    //     fi
+                    // done
                 }
             }
         }
