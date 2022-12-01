@@ -3,4 +3,7 @@
 **/terraform*
 **/__pycache__
 **/*kubeconfig
+**/secret*
+4-module/k8s_configs/observability
+4-module/k8s_configs/jenkins
 docs/
