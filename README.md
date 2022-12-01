@@ -20,6 +20,7 @@ This challenge was proposed by the BU Managers and the tech lead of the company 
 - Javascript
 - Python
 - FastAPI
+- Boto3
 - Lambda
 - SNS
 - Amazon EventBridge
